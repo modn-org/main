@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: bucket
+      - name: Read the pinned modn revision
+        id: modn
+        run: echo "ref=$(tr -d '[:space:]' < bucket/.github/modn-ref)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: modn-org/modn
+          ref: ${{ steps.modn.outputs.ref }}
+          path: modn
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: modn
+      - name: Build the pinned modn
+        working-directory: modn
+        run: cargo build --locked -p modn-cli
+      - name: Validate and pack the bucket
+        run: python3 bucket/.github/scripts/validate.py bucket modn/target/debug/modn dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: main-bucket
+          path: dist/
+          if-no-files-found: error
+
+  release:
+    needs: validate
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: main-bucket
+          path: dist
+      - name: Publish the validated bucket
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "$GITHUB_REF_NAME" dist/main-bucket.zip dist/main-bucket.zip.sha256
+          --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes --title "main $GITHUB_REF_NAME"
