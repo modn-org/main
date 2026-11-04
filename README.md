@@ -21,7 +21,15 @@ Modn release.
 
 Add `games/<game-id>/<package-id>.json` and a row in `PROVENANCE.md`. Open a
 pull request. CI packs the bucket and installs it with the modn revision in
-`.github/modn-ref`. It then checks that `modn search` lists every manifest.
+`.github/modn-ref`. It checks that `modn search` lists every manifest. It then
+runs `modn install main/<game-id>/<package-id> --dry-run` for every package
+against a fake installation, so each dependency and version requirement must
+resolve. A new game needs its installation marker in `GAME_MARKERS` in
+`.github/scripts/validate.py`. `selftest.py` checks that validation rejects a
+future host API, a missing dependency and an unsatisfied version requirement.
+
+The ZIP bytes repeat for the same Python and zlib build. Other zlib builds can
+compress differently, so only CI publishes the release ZIP.
 
 ## Game modules
 
@@ -41,4 +49,5 @@ Run the checks locally with a modn build:
 
 ```sh
 python .github/scripts/validate.py . path/to/modn dist
+python .github/scripts/selftest.py . path/to/modn
 ```

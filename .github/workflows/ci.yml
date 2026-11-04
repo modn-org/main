@@ -33,6 +33,8 @@ jobs:
         run: cargo build --locked -p modn-cli
       - name: Validate and pack the bucket
         run: python3 bucket/.github/scripts/validate.py bucket modn/target/debug/modn dist
+      - name: Check that validation rejects broken buckets
+        run: python3 bucket/.github/scripts/selftest.py bucket modn/target/debug/modn
       - uses: actions/upload-artifact@v4
         with:
           name: main-bucket
