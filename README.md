@@ -39,6 +39,12 @@ bucket, and `modn bucket update` keeps the previous copy. Change
 `api_version` only after a Modn release supports the new version. Then change
 `.github/modn-ref` to that release.
 
+The optional `min_modn_version` declares a minimum Modn release as a complete
+semantic version, without operators or wildcards. Cyberpunk requires Modn 0.3.0
+for REDmod `json-object` validation. Clients with this feature report the
+required and running versions. Released Modn 0.2.0 refuses the unknown field.
+The bucket needs Modn 0.3.0 before it can pass validation or be published.
+
 ## Releasing
 
 Push a tag `vYYYY.MM.DD` from `main` (add `.N` for a second release on the
