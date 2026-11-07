@@ -1,7 +1,8 @@
 # Official `main` bucket provenance
 
-Evidence for each Cyberpunk 2077 package in the official bucket, inspected
-2026-10-31. Modn does not mirror or redistribute any of these archives.
+Evidence for each package in the official bucket. The Cyberpunk 2077 entries
+were inspected 2026-10-31 and the Balatro entries 2026-11-07. Modn does not
+mirror or redistribute any of these archives.
 
 ## Sources
 
@@ -95,3 +96,20 @@ Uninstalling in reverse order restores the fixture. The milestone 3 gate
 installs, which download the `https` archives, and adds rollback and recovery
 checks. It compares the whole tree, directories included: uninstall and
 rollback also remove the empty directories that Modn created.
+
+## Balatro
+
+| Package | Version | Source | Upstream | License | Pin |
+| --- | --- | --- | --- | --- | --- |
+| `lovely` | 0.10.0 | github-release | [ethangreen-dev/lovely-injector](https://github.com/ethangreen-dev/lovely-injector) | MIT | tag `v0.10.0`, asset `lovely-x86_64-pc-windows-msvc.zip`, SHA-256 `7f481f984ab8ee633c90ce18220c88a2da8f93ca86b6c3e3ff70a725c05807ab` |
+| `steamodded` | 26.1002.0 | git | [Steamodded/smods](https://github.com/Steamodded/smods) | GPL-3.0 | tag `26.1002.0`, commit `af0fdb1eb2c9e191262c128bc88bbc4da991e12d` |
+
+The `lovely` SHA-256 matches the GitHub release asset digest and a fresh
+download of the Windows ZIP. Lovely is a native injector: it installs
+`winmm.dll` beside `Balatro.exe`, so its manifest sets `native_injector` and
+Modn requires explicit approval before installing it.
+
+Steamodded has no redistributed archive. Modn fetches the pinned commit from
+`Steamodded/smods` and installs the tree under the Balatro content root
+(`%APPDATA%/Balatro/Mods/smods/`). Its manifest declares `lovely` as a
+dependency, because Steamodded loads through the Lovely injector.

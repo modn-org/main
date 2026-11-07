@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "lovely", "game": "balatro",
+  "name": "Lovely Injector", "version": "0.10.0",
+  "archive_format": "zip", "sha256": "7f481f984ab8ee633c90ce18220c88a2da8f93ca86b6c3e3ff70a725c05807ab",
+  "source": {"kind":"github-release","repository":"ethangreen-dev/lovely-injector","tag":"v0.10.0","asset":"lovely-x86_64-pc-windows-msvc.zip"},
+  "native_injector": true,
+  "homepage": "https://github.com/ethangreen-dev/lovely-injector"
+}

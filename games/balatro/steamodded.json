@@ -1,0 +1,7 @@
+{
+  "schema_version": 1, "id": "steamodded", "game": "balatro",
+  "name": "Steamodded", "version": "26.1002.0",
+  "source": {"kind":"git","repository":"Steamodded/smods","commit":"af0fdb1eb2c9e191262c128bc88bbc4da991e12d"},
+  "dependencies": ["lovely"],
+  "homepage": "https://github.com/Steamodded/smods"
+}

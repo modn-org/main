@@ -66,7 +66,14 @@ def validate(bucket: Path, modn_binary: Path, output: Path) -> str:
             marker.write_bytes(b"validation fixture")
         for game, package in sorted(expected):
             reference = f"main/{game}/{package}"
-            plan = modn("install", reference, "--dry-run", "--path", str(work / "games" / game))
+            # The validator is a disposable fixture, so it approves every
+            # declared native injector explicitly. Lovely also reaches a
+            # plan as Steamodded's dependency.
+            plan = modn(
+                "install", reference, "--dry-run",
+                "--allow-native-injector",
+                "--path", str(work / "games" / game),
+            )
             require(plan["package"] == reference, f"{reference} planned {plan['package']}")
     return f"Validated {len(expected)} packages for {len(games)} games: {', '.join(games)}"
 
