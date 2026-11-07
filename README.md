@@ -49,7 +49,9 @@ The optional `min_modn_version` declares a minimum Modn release as a complete
 semantic version, without operators or wildcards. Cyberpunk requires Modn 0.3.0
 for REDmod `json-object` validation. Clients with this feature report the
 required and running versions. Released Modn 0.2.0 refuses the unknown field.
-The bucket needs Modn 0.3.0 before it can pass validation or be published.
+Balatro requires Modn 0.4.0 for module API 2, native injectors and the `git`
+source. The bucket needs Modn 0.4.0 before it can pass validation or be
+published.
 
 ## Releasing
 
