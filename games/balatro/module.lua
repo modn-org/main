@@ -349,6 +349,28 @@ local function note_listing(response, issues)
     return incomplete
 end
 
+local function safe_entry_name(name)
+    return type(name) == "string" and name ~= "" and name ~= "." and name ~= ".."
+        and string.find(name, "[/\\]") == nil
+end
+
+local function folder_kind(root_id, folder, limit)
+    local ok, response = pcall(dir.list, root_id, folder, limit)
+    if not ok then return nil, false end
+    local lovely, manifest = false, false
+    for _, entry in ipairs(response.items) do
+        if entry.kind == "file" then
+            local name = lower(entry.name)
+            if name == "lovely.toml" then
+                lovely = true
+            elseif string.sub(name, -5) == ".json" then
+                manifest = true
+            end
+        end
+    end
+    return { lovely = lovely, manifest = manifest }, response.truncated
+end
+
 function policy.scan(limit)
     local mods = {}
     local signals = {}
@@ -364,36 +386,80 @@ function policy.scan(limit)
         })
     end
 
+    -- The content root is %APPDATA%\Balatro\Mods. Saves live in sibling
+    -- folders 1/, 2/ and 3/, outside this root, so no save path is listed.
+    -- Every listing below targets root 2 with "" or a name that the host
+    -- returned for root 2, so the scan never leaves the content root.
     local roots = mods_host.discovery.roots()
-    if #roots >= 2 and present(2, "smods", "directory") then
-        local function push(relative)
-            table.insert(mods, { relative_path = relative, kind = "steamodded", root = "content" })
+    if #roots >= 2 then
+        local function push(relative, kind)
+            table.insert(mods, { relative_path = relative, kind = kind, root = "content" })
         end
-        local visited = 0
-        local stack = { "smods" }
-        while #stack > 0 do
-            local folder = table.remove(stack)
-            local ok, response = pcall(dir.list, 2, folder, math.max(limit - visited, 1))
-            if not ok then
-                incomplete = true
-                issues.SCAN_UNREADABLE_ENTRY = true
-            else
-                if note_listing(response, issues) then incomplete = true end
-                for _, entry in ipairs(response.items) do
-                    if visited >= limit then
+        local ok, top = pcall(dir.list, 2, "", math.max(limit, 1))
+        if ok then
+            if note_listing(top, issues) then incomplete = true end
+            local function walk_smods()
+                local stack = { "smods" }
+                while #stack > 0 do
+                    local folder = table.remove(stack)
+                    local listed, response = pcall(dir.list, 2, folder,
+                        math.max(limit - #mods, 1))
+                    if not listed then
                         incomplete = true
-                        issues.SCAN_INCOMPLETE = true
-                        break
-                    end
-                    visited = visited + 1
-                    local relative = folder .. "/" .. entry.name
-                    if entry.kind == "directory" then
-                        table.insert(stack, relative)
-                    elseif entry.kind == "file" then
-                        push(relative)
+                        issues.SCAN_UNREADABLE_ENTRY = true
+                    else
+                        if note_listing(response, issues) then incomplete = true end
+                        for _, entry in ipairs(response.items) do
+                            if #mods >= limit then
+                                incomplete = true
+                                issues.SCAN_INCOMPLETE = true
+                                return
+                            end
+                            if not safe_entry_name(entry.name) then
+                                incomplete = true
+                                issues.SCAN_UNSAFE_ENTRY = true
+                            else
+                                local relative = folder .. "/" .. entry.name
+                                if entry.kind == "directory" then
+                                    table.insert(stack, relative)
+                                elseif entry.kind == "file" then
+                                    push(relative, "steamodded")
+                                end
+                            end
+                        end
                     end
                 end
-                if #response.items == 0 and folder == "smods" then push(folder) end
+            end
+            for _, entry in ipairs(top.items) do
+                if #mods >= limit then
+                    incomplete = true
+                    issues.SCAN_INCOMPLETE = true
+                    break
+                end
+                if not safe_entry_name(entry.name) then
+                    incomplete = true
+                    issues.SCAN_UNSAFE_ENTRY = true
+                elseif entry.kind == "file" then
+                    if is_lua(entry.name) then push(entry.name, "single") end
+                elseif entry.kind == "directory" then
+                    if lower(entry.name) == "smods" then
+                        push(entry.name, "steamodded")
+                        walk_smods()
+                    else
+                        local info, truncated = folder_kind(2, entry.name, math.max(limit, 32))
+                        if info == nil then
+                            incomplete = true
+                            issues.SCAN_UNREADABLE_ENTRY = true
+                        elseif info.lovely then
+                            push(entry.name, "lovely")
+                        elseif info.manifest then
+                            push(entry.name, "mod")
+                        elseif truncated then
+                            incomplete = true
+                            issues.SCAN_INCOMPLETE = true
+                        end
+                    end
+                end
             end
         end
     end
