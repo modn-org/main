@@ -8,7 +8,10 @@ import tempfile
 
 from pack import pack
 
-GAME_MARKERS = {"cyberpunk-2077": "bin/x64/Cyberpunk2077.exe"}
+GAME_MARKERS = {
+    "cyberpunk-2077": "bin/x64/Cyberpunk2077.exe",
+    "balatro": "Balatro.exe",
+}
 
 
 class ValidationError(Exception):
@@ -38,6 +41,8 @@ def validate(bucket: Path, modn_binary: Path, output: Path) -> str:
         require(repeat.read_bytes() == archive.read_bytes(), "packing is not deterministic")
         env = {key: value for key, value in os.environ.items() if not key.startswith("MODN_")}
         env["LOCALAPPDATA"] = str(work / "data")
+        env["APPDATA"] = str(work / "appdata")
+        (work / "appdata").mkdir()
         env["MODN_MAIN_BUCKET_SOURCE"] = str(archive)
 
         def modn(*command: str):
@@ -61,7 +66,14 @@ def validate(bucket: Path, modn_binary: Path, output: Path) -> str:
             marker.write_bytes(b"validation fixture")
         for game, package in sorted(expected):
             reference = f"main/{game}/{package}"
-            plan = modn("install", reference, "--dry-run", "--path", str(work / "games" / game))
+            # The validator is a disposable fixture, so it approves every
+            # declared native injector explicitly. Lovely also reaches a
+            # plan as Steamodded's dependency.
+            plan = modn(
+                "install", reference, "--dry-run",
+                "--allow-native-injector",
+                "--path", str(work / "games" / game),
+            )
             require(plan["package"] == reference, f"{reference} planned {plan['package']}")
     return f"Validated {len(expected)} packages for {len(games)} games: {', '.join(games)}"
 

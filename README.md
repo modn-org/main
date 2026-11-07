@@ -39,11 +39,19 @@ bucket, and `modn bucket update` keeps the previous copy. Change
 `api_version` only after a Modn release supports the new version. Then change
 `.github/modn-ref` to that release.
 
+API 2 adds an optional `content_root`: a safe relative path below `%APPDATA%`
+where a game keeps its mods. Balatro declares `Balatro/Mods`, so its packages
+plan files under the content root, and scan and doctor report content-root
+entries separately from the game root. An API 2 module without `content_root`
+keeps the game-root behavior.
+
 The optional `min_modn_version` declares a minimum Modn release as a complete
 semantic version, without operators or wildcards. Cyberpunk requires Modn 0.3.0
 for REDmod `json-object` validation. Clients with this feature report the
 required and running versions. Released Modn 0.2.0 refuses the unknown field.
-The bucket needs Modn 0.3.0 before it can pass validation or be published.
+Balatro requires Modn 0.4.0 for module API 2, native injectors and the `git`
+source. The bucket needs Modn 0.4.0 before it can pass validation or be
+published.
 
 ## Releasing
 
