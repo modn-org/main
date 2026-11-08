@@ -13,9 +13,11 @@ games/<game-id>/module.json
 games/<game-id>/module.lua
 ```
 
-`modn bucket update` downloads `main-bucket.zip` and `main-bucket.zip.sha256`
-from the latest release of this repository. A bucket change does not need a
-Modn release.
+`modn bucket update` downloads `main-bucket.zip` and `main-bucket.zip.minisig`
+from the latest release of this repository. The signature is a minisign
+signature over the catalog statement: the bucket name and a BLAKE3 digest of
+the extracted files. Modn verifies it with the signer key built into Modn and
+refuses an unsigned release. A bucket change does not need a Modn release.
 
 ## Adding a package
 
@@ -56,12 +58,20 @@ published.
 ## Releasing
 
 Push a tag `vYYYY.MM.DD` from `main` (add `.N` for a second release on the
-same day). CI validates the tagged commit and publishes the release with
-`main-bucket.zip` and its checksum.
+same day). CI validates the tagged commit. It then computes the catalog
+statement with Modn's `catalog_digest` example and signs it with minisign. The
+secret key and its password are the `MINISIGN_SECRET_KEY` and
+`MINISIGN_PASSWORD` Actions secrets. A production build of the pinned Modn must
+accept the signed ZIP before CI publishes `main-bucket.zip` and
+`main-bucket.zip.minisig`.
 
-Run the checks locally with a modn build:
+Pull requests never use the secrets. Validation signs a copy of the ZIP with an
+ephemeral key, so it needs a modn build with the `test-main-key` feature and
+the `sign_catalog` example. Run the checks locally from a modn checkout:
 
 ```sh
-python .github/scripts/validate.py . path/to/modn dist
-python .github/scripts/selftest.py . path/to/modn
+cargo build --locked -p modn-cli --features modn-core/test-main-key
+cargo build --locked -p modn-core --example sign_catalog
+python .github/scripts/validate.py . path/to/modn path/to/sign_catalog dist
+python .github/scripts/selftest.py . path/to/modn path/to/sign_catalog
 ```
