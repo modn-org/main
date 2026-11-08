@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "all-vanilla-clothes-atelier-store", "game": "cyberpunk-2077",
+  "name": "All Vanilla Clothes Atelier Store", "version": "1.0",
+  "archive_format": "zip", "sha256": "041b2358935e2520427343046074abf19f59dcad7d9d789d93d3f81b683fb423",
+  "source": {"kind":"manual","filename":"All Vanilla Clothes Atelier Store-5544-v1-0-1738160755.zip"},
+  "dependencies": ["redscript", "virtual-atelier"],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/5544"
+}

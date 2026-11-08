@@ -1,0 +1,7 @@
+{
+  "schema_version": 1, "id": "clean-voiceovers", "game": "cyberpunk-2077",
+  "name": "Clean Voiceovers", "version": "r1",
+  "archive_format": "zip", "sha256": "a3ed0abda2a921acb341b6d7e08b3df70bf90407d49f2be2139a65ece567c15d",
+  "source": {"kind":"manual","filename":"Clean Voiceovers-15285-r1-1718471958.zip"},
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/15285"
+}

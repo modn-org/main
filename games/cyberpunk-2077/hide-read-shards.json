@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "hide-read-shards", "game": "cyberpunk-2077",
+  "name": "Hide Read Shards", "version": "0.4",
+  "archive_format": "zip", "sha256": "d3a31e5a6837af4b0df31c57e2b6951455c6918c464371cf9e4a673854622a88",
+  "source": {"kind":"manual","filename":"Hide Read Shards-2820-0-4-1767878087.zip"},
+  "dependencies": ["redscript"],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/2820"
+}

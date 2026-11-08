@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "autoloot", "game": "cyberpunk-2077",
+  "name": "Autoloot", "version": "3.12.0",
+  "archive_format": "zip", "sha256": "0ed67b61ad2afc6a124445b5d2394f2d81daea91a8e5750e97f31a319bf6e1a9",
+  "source": {"kind":"manual","filename":"Autoloot 5202 3.12.0 2026-10-23T00-14Z xNHtNXXsI.zip"},
+  "dependencies": ["cet"],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/5202"
+}

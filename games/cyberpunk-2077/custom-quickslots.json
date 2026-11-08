@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "custom-quickslots", "game": "cyberpunk-2077",
+  "name": "Custom Quickslots", "version": "5.7.1",
+  "archive_format": "zip", "sha256": "988a229108495aed4052582363f006521e809bb03e1486bd02eed0dccb8c0c1c",
+  "source": {"kind":"manual","filename":"Custom Quickslots 3096 5.7.1 2026-10-25T15-48Z 5em9eooP1.zip"},
+  "dependencies": ["cet", "input-loader", "redscript"],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/3096"
+}

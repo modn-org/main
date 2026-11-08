@@ -1,0 +1,7 @@
+{
+  "schema_version": 1, "id": "weather-probability-rebalance", "game": "cyberpunk-2077",
+  "name": "Weather Probability Rebalance", "version": "2.10",
+  "archive_format": "zip", "sha256": "e565255db10053bf1feb0c4b6373bce7a631b14191401278475d7f186d6ee10a",
+  "source": {"kind":"manual","filename":"Weather Probability Rebalance 3196 2.10 2026-10-23T01-43Z D2ZS2nng9.zip"},
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/3196"
+}

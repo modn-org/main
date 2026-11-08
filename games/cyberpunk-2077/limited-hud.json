@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "limited-hud", "game": "cyberpunk-2077",
+  "name": "Limited HUD", "version": "2.23.1",
+  "archive_format": "zip", "sha256": "8920cbfce0b7c57c0f879f7925aafa2ab920c8d92cdcd8c405757f2bdf890c7a",
+  "source": {"kind":"manual","filename":"Limited HUD 2592 2.23.1 2026-10-27T05-52Z G5yE5CCY1.zip"},
+  "dependencies": ["archivexl", "input-loader", "redscript"],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/2592"
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "virtual-car-dealer", "game": "cyberpunk-2077",
+  "name": "Virtual Car Dealer", "version": "2.3.0",
+  "archive_format": "zip", "sha256": "a161a4b0af082bf4cb83ae0badf35136ef37134330e949e1dfb587abcfaa913b",
+  "source": {"kind":"manual","filename":"Virtual Car Dealer 4454 2.3.0 2026-10-25T11-18Z lcXrcZZMt.zip"},
+  "dependencies": ["archivexl", "codeware", "redscript"],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/4454"
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "drone-companions", "game": "cyberpunk-2077",
+  "name": "Drone Companions", "version": "1.20",
+  "archive_format": "zip", "sha256": "6c6454fe0c63e0cbd9fc363674bce1a6bf003d3cd73327e8f5f25355f5ded83e",
+  "source": {"kind":"manual","filename":"Drone Companions-4520-1-20-1661116650.zip"},
+  "dependencies": ["cet", "redscript"],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/4520"
+}

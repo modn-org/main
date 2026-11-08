@@ -1,0 +1,7 @@
+{
+  "schema_version": 1, "id": "preem-scopes", "game": "cyberpunk-2077",
+  "name": "Preem Scopes", "version": "0.17.2",
+  "archive_format": "zip", "sha256": "b7a45788f7effc66d8a6b2ac7a7d701621ef40ba60b28c10aab01e2f57a04ed3",
+  "source": {"kind":"manual","filename":"Preem Scopes-10021-0-17-2-1744383914.zip"},
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/10021"
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "cyberarms-patch", "game": "cyberpunk-2077",
+  "name": "Cyberarms Patch", "version": "1.4.2",
+  "archive_format": "zip", "sha256": "600438d4b7ae20b865e55c7d2bf3362aec62285c79cbcb7694f3d24e1a61b8b8",
+  "source": {"kind":"manual","filename":"Cyberarms Patch 4393 1.4.2 2026-07-15T17-31Z 5em9eoITV.zip"},
+  "dependencies": ["cet"],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/4393"
+}

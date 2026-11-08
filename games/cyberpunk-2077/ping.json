@@ -1,0 +1,8 @@
+{
+  "schema_version": 1, "id": "ping", "game": "cyberpunk-2077",
+  "name": "Ping", "version": "1.4.1",
+  "archive_format": "zip", "sha256": "8c30560583f7d8e63dc2466ee3d287ed9394c4ecaec25187cd01b8e437027544",
+  "source": {"kind":"manual","filename":"Ping 34933 1.4.1 2026-10-27T18-03Z SlR4l66yv.zip"},
+  "dependencies": ["codeware", "redscript"],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/34933"
+}

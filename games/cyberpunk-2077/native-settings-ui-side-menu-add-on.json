@@ -1,0 +1,9 @@
+{
+  "schema_version": 1, "id": "native-settings-ui-side-menu-add-on", "game": "cyberpunk-2077",
+  "name": "Native Settings UI Side Menu Add-on", "version": "1.6.0",
+  "archive_format": "zip", "sha256": "8f50d4db5c5718c02a19eed27a1c5bfdf21f72f556e353aaa783ce5c6ef05bf6",
+  "source": {"kind":"manual","filename":"Native Settings UI Side Menu Add-on 16218 1.6.0 2026-10-24T10-52Z LACBAIIrx.zip"},
+  "dependencies": ["cet", "native-settings-ui"],
+  "dependency_versions": {"cet": ">=1.26.0"},
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/16218"
+}
