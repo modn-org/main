@@ -12,6 +12,8 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    outputs:
+      modn-ref: ${{ steps.modn.outputs.ref }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,13 +30,20 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           workspaces: modn
-      - name: Build the pinned modn
+      # Validation signs with an ephemeral key, so it needs the test-key build.
+      - name: Build the pinned modn with the test signer key
         working-directory: modn
-        run: cargo build --locked -p modn-cli
+        run: |
+          cargo build --locked -p modn-cli --features modn-core/test-main-key
+          cargo build --locked -p modn-core --example sign_catalog
       - name: Validate and pack the bucket
-        run: python3 bucket/.github/scripts/validate.py bucket modn/target/debug/modn dist
+        run: >-
+          python3 bucket/.github/scripts/validate.py bucket modn/target/debug/modn
+          modn/target/debug/examples/sign_catalog dist
       - name: Check that validation rejects broken buckets
-        run: python3 bucket/.github/scripts/selftest.py bucket modn/target/debug/modn
+        run: >-
+          python3 bucket/.github/scripts/selftest.py bucket modn/target/debug/modn
+          modn/target/debug/examples/sign_catalog
       - uses: actions/upload-artifact@v4
         with:
           name: main-bucket
@@ -48,13 +57,53 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: modn-org/modn
+          ref: ${{ needs.validate.outputs.modn-ref }}
+          path: modn
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: modn
       - uses: actions/download-artifact@v4
         with:
           name: main-bucket
           path: dist
-      - name: Publish the validated bucket
+      # The production build has only the signer key built into Modn.
+      - name: Build the pinned modn and compute the catalog statement
+        working-directory: modn
+        run: |
+          cargo build --locked -p modn-cli
+          mkdir "$RUNNER_TEMP/catalog"
+          unzip -q ../dist/main-bucket.zip -d "$RUNNER_TEMP/catalog"
+          cargo run --quiet --locked -p modn-core --example catalog_digest -- \
+            "$RUNNER_TEMP/catalog" > "$RUNNER_TEMP/catalog.statement"
+          cat "$RUNNER_TEMP/catalog.statement"
+      - name: Install minisign
+        run: sudo apt-get update -q && sudo apt-get install -y -q minisign
+      - name: Sign the catalog statement
+        env:
+          MINISIGN_SECRET_KEY: ${{ secrets.MINISIGN_SECRET_KEY }}
+          MINISIGN_PASSWORD: ${{ secrets.MINISIGN_PASSWORD }}
+        run: |
+          key="$RUNNER_TEMP/main-bucket.key"
+          trap 'rm -f "$key"' EXIT
+          umask 077
+          printf '%s\n' "$MINISIGN_SECRET_KEY" | tr -d '\r' > "$key"
+          printf '%s\n' "$MINISIGN_PASSWORD" | minisign -S -s "$key" \
+            -m "$RUNNER_TEMP/catalog.statement" -x dist/main-bucket.zip.minisig \
+            -t "modn-org/main $GITHUB_REF_NAME"
+      - name: Check that the production modn accepts the signed release
+        run: |
+          data="$RUNNER_TEMP/modn-data"
+          mkdir -p "$data/appdata"
+          LOCALAPPDATA="$data" APPDATA="$data/appdata" \
+            MODN_MAIN_BUCKET_SOURCE="$PWD/dist/main-bucket.zip" \
+            modn/target/debug/modn --state-dir "$data/state" bucket update
+      - name: Publish the signed bucket
         env:
           GH_TOKEN: ${{ github.token }}
         run: >-
-          gh release create "$GITHUB_REF_NAME" dist/main-bucket.zip dist/main-bucket.zip.sha256
+          gh release create "$GITHUB_REF_NAME" dist/main-bucket.zip dist/main-bucket.zip.minisig
           --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes --title "main $GITHUB_REF_NAME"

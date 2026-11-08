@@ -1,6 +1,5 @@
 """Build the release bucket ZIP with reproducible paths, metadata and bytes."""
 import argparse
-import hashlib
 from pathlib import Path
 import zipfile
 
@@ -28,8 +27,6 @@ def pack(source: Path, output: Path) -> None:
             entry.external_attr = 0o100644 << 16
             entry.compress_type = zipfile.ZIP_DEFLATED
             archive.writestr(entry, path.read_bytes(), compresslevel=9)
-    digest = hashlib.sha256(output.read_bytes()).hexdigest()
-    Path(str(output) + ".sha256").write_text(f"{digest} *{output.name}\n", encoding="ascii")
 
 
 if __name__ == "__main__":

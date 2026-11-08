@@ -50,6 +50,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("bucket", type=Path)
     parser.add_argument("modn", type=Path)
+    parser.add_argument("signer", type=Path, help="the modn-core sign_catalog example")
     args = parser.parse_args()
     for name, (mutate, expected) in CASES.items():
         with tempfile.TemporaryDirectory() as work:
@@ -63,7 +64,7 @@ def main() -> None:
                     shutil.copy2(source, copy / entry)
             mutate(copy)
             try:
-                validate(copy, args.modn, Path(work) / "dist")
+                validate(copy, args.modn, args.signer, Path(work) / "dist")
             except ValidationError as error:
                 if expected not in str(error):
                     raise SystemExit(f"{name}: wrong rejection: {error}") from None

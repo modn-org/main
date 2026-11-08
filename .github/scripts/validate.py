@@ -1,10 +1,17 @@
-"""Validate the main bucket with a modn binary and write its release ZIP."""
+"""Validate the main bucket with a modn binary and write its release ZIP.
+
+The modn binary must be built with the `test-main-key` feature. Validation
+signs a copy of the ZIP with an ephemeral key from the `sign_catalog` example,
+so the release ZIP in the output directory stays unsigned.
+"""
 import argparse
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import tempfile
+import zipfile
 
 from pack import pack
 
@@ -31,7 +38,22 @@ def current_releases(bucket: Path) -> set[tuple[str, str]]:
     }
 
 
-def validate(bucket: Path, modn_binary: Path, output: Path) -> str:
+def sign_copy(archive: Path, signer: Path, work: Path) -> tuple[Path, str]:
+    """Sign a copy of the archive with an ephemeral key; return it and the public key."""
+    extracted = work / "extracted"
+    with zipfile.ZipFile(archive) as contents:
+        contents.extractall(extracted)
+    signed = work / "main-bucket.zip"
+    shutil.copyfile(archive, signed)
+    public_key = work / "main-bucket.pub"
+    result = subprocess.run(
+        [str(signer.resolve()), str(extracted), f"{signed}.minisig", str(public_key)],
+        capture_output=True, text=True, check=False)
+    require(result.returncode == 0, f"sign_catalog: {result.stderr.strip()}")
+    return signed, public_key.read_text(encoding="ascii")
+
+
+def validate(bucket: Path, modn_binary: Path, signer: Path, output: Path) -> str:
     archive = output.resolve() / "main-bucket.zip"
     pack(bucket, archive)
     with tempfile.TemporaryDirectory() as work:
@@ -39,11 +61,13 @@ def validate(bucket: Path, modn_binary: Path, output: Path) -> str:
         repeat = work / "repeat.zip"
         pack(bucket, repeat)
         require(repeat.read_bytes() == archive.read_bytes(), "packing is not deterministic")
+        signed, public_key = sign_copy(archive, signer, work)
         env = {key: value for key, value in os.environ.items() if not key.startswith("MODN_")}
         env["LOCALAPPDATA"] = str(work / "data")
         env["APPDATA"] = str(work / "appdata")
         (work / "appdata").mkdir()
-        env["MODN_MAIN_BUCKET_SOURCE"] = str(archive)
+        env["MODN_MAIN_BUCKET_SOURCE"] = str(signed)
+        env["MODN_TEST_MAIN_BUCKET_PUBLIC_KEY"] = public_key
 
         def modn(*command: str):
             result = subprocess.run(
@@ -82,10 +106,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("bucket", type=Path)
     parser.add_argument("modn", type=Path)
+    parser.add_argument("signer", type=Path, help="the modn-core sign_catalog example")
     parser.add_argument("output", type=Path)
     args = parser.parse_args()
     try:
-        print(validate(args.bucket, args.modn, args.output))
+        print(validate(args.bucket, args.modn, args.signer, args.output))
     except ValidationError as error:
         raise SystemExit(f"bucket validation failed: {error}") from None
 
