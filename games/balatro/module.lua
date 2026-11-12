@@ -4,7 +4,7 @@ local dir = mods_host.directory
 local policy = {
     game_id = "balatro",
     api_version = mods_host.api_version,
-    version = "0.2.0",
+    version = "0.3.0",
     marker = "Balatro.exe",
 }
 
