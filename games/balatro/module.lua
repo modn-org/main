@@ -4,10 +4,8 @@ local dir = mods_host.directory
 local policy = {
     game_id = "balatro",
     api_version = mods_host.api_version,
-    version = "0.1.0",
+    version = "0.3.0",
     marker = "Balatro.exe",
-    steam_manifest = "steamapps/appmanifest_2379780.acf",
-    common_paths = {},
 }
 
 local function metadata(root_id, relative)
@@ -23,33 +21,6 @@ end
 
 function policy.validate()
     return present(1, policy.marker, "file")
-end
-
-local function quoted_value(text, key)
-    for line in string.gmatch(text, "[^\r\n]+") do
-        local words = {}
-        for word in string.gmatch(line, '"([^"]*)"') do
-            table.insert(words, word)
-        end
-        if #words >= 2 and string.lower(words[1]) == string.lower(key) then
-            return words[2]
-        end
-    end
-    return nil
-end
-
-function policy.steam_name()
-    local ok, contents = pcall(dir.read_text, 1, policy.steam_manifest)
-    local name = ok and quoted_value(contents, "installdir") or nil
-    if type(name) ~= "string" or name == "" or name == "." or name == ".."
-        or string.find(name, "[/\\]") then
-        return "Balatro"
-    end
-    return name
-end
-
-function policy.is_epic()
-    return false
 end
 
 local function split_path(value)

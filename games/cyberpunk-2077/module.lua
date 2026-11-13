@@ -4,12 +4,6 @@ local policy = {
     game_id = "cyberpunk-2077",
     api_version = mods_host.api_version,
     marker = "bin/x64/Cyberpunk2077.exe",
-    steam_manifest = "appmanifest_1091500.acf",
-    common_paths = {
-        "GOG Galaxy/Games/Cyberpunk 2077",
-        "Epic Games/Cyberpunk2077",
-        "Epic Games/Cyberpunk 2077",
-    },
 }
 local function metadata(relative)
     local ok, value = pcall(fs.metadata, 1, relative)
@@ -22,30 +16,6 @@ local function present(relative, kind)
 end
 function policy.validate()
     return present(policy.marker, "file")
-end
-local function quoted_value(text, key)
-    for line in string.gmatch(text, "[^\r\n]+") do
-        local words = {}
-        for word in string.gmatch(line, '"([^"]*)"') do
-            table.insert(words, word)
-        end
-        if #words >= 2 and string.lower(words[1]) == string.lower(key) then
-            return words[2]
-        end
-    end
-    return nil
-end
-function policy.steam_name()
-    local ok, contents = pcall(dir.read_text, 1, "steamapps/appmanifest_1091500.acf")
-    local name = ok and quoted_value(contents, "installdir") or nil
-    if type(name) ~= "string" or name == "" or name == "." or name == ".."
-        or string.find(name, "[/\\]") then
-        return "Cyberpunk 2077"
-    end
-    return name
-end
-function policy.is_epic(display_name)
-    return display_name == "Cyberpunk 2077"
 end
 local function listing(folder, required, max_items)
     local ok, response = pcall(dir.list, 1, folder, max_items)

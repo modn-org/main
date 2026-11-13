@@ -53,7 +53,9 @@ for REDmod `json-object` validation. Clients with this feature report the
 required and running versions. Released Modn 0.2.0 refuses the unknown field.
 Balatro requires Modn 0.4.0 for module API 2, native injectors and the `git`
 source. Signed releases need Modn 0.5.0: earlier releases cannot verify
-`main-bucket.zip.minisig`, so `.github/modn-ref` pins `v0.5.0`.
+`main-bucket.zip.minisig`. The `stores` and `launch` fields need Modn 0.6.0:
+earlier releases refuse them as unknown fields. `.github/modn-ref` therefore
+pins `v0.6.0`.
 
 ## Releasing
 
