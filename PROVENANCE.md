@@ -8,9 +8,10 @@ Modn does not mirror or redistribute any of these archives.
 
 - **https**: the original GitHub release asset. Its SHA-256 matches the
   `digest` GitHub publishes for that asset and a fresh download.
-- **manual**: Nexus Mods only. Nexus requires a signed-in download, and its
-  authors have not granted Modn permission to redistribute. Users download
-  the named file themselves; the hash was taken from that original download.
+- **nexus**: one Nexus Mods file, pinned by `mod_id` and `file_id`. Nexus
+  requires a signed-in download, and its authors have not granted Modn
+  permission to redistribute. Modn downloads the file with the user's Nexus API
+  key (Premium accounts) or the `--nxm` link from the file page (free accounts).
 
 | Package | Version | Source | Upstream |
 | --- | --- | --- | --- |
@@ -23,28 +24,28 @@ Modn does not mirror or redistribute any of these archives.
 | `mod-settings` | 0.2.28 | https | [jackhumbert/mod_settings](https://github.com/jackhumbert/mod_settings) |
 | `input-loader` | 0.2.6 | https | [jackhumbert/cyberpunk2077-input-loader](https://github.com/jackhumbert/cyberpunk2077-input-loader) |
 | `better-loot-markers` | 1.4.1 | https | [rodikh/BetterLootMarkers-Cyberpunk-mod](https://github.com/rodikh/BetterLootMarkers-Cyberpunk-mod) |
-| `equipment-ex` | 1.2.10 | manual | [Nexus 6945](https://www.nexusmods.com/cyberpunk2077/mods/6945) |
-| `browser-extension` | 0.9.7 | manual | [Nexus 10038](https://www.nexusmods.com/cyberpunk2077/mods/10038) |
-| `no-intro-videos` | 0.8 | manual | [Nexus 533](https://www.nexusmods.com/cyberpunk2077/mods/533) |
-| `virtual-atelier` | 1.6.4 | manual | [Nexus 2987](https://www.nexusmods.com/cyberpunk2077/mods/2987) |
-| `all-vanilla-clothes-atelier-store` | 1.0 | manual | [Nexus 5544](https://www.nexusmods.com/cyberpunk2077/mods/5544) |
-| `autoloot` | 3.12.0 | manual | [Nexus 5202](https://www.nexusmods.com/cyberpunk2077/mods/5202) |
-| `clean-voiceovers` | r1 | manual | [Nexus 15285](https://www.nexusmods.com/cyberpunk2077/mods/15285) |
-| `custom-quickslots` | 5.7.1 | manual | [Nexus 3096](https://www.nexusmods.com/cyberpunk2077/mods/3096) |
-| `cyberarms-patch` | 1.4.2 | manual | [Nexus 4393](https://www.nexusmods.com/cyberpunk2077/mods/4393) |
-| `hd-reworked-project` | 2.0 | manual | [Nexus 7652](https://www.nexusmods.com/cyberpunk2077/mods/7652) |
-| `disclosed-hidden-gems` | 1.1.0 | manual | [Nexus 29021](https://www.nexusmods.com/cyberpunk2077/mods/29021) |
-| `drone-companions` | 1.20 | manual | [Nexus 4520](https://www.nexusmods.com/cyberpunk2077/mods/4520) |
-| `hide-read-shards` | 0.4 | manual | [Nexus 2820](https://www.nexusmods.com/cyberpunk2077/mods/2820) |
-| `limited-hud` | 2.23.1 | manual | [Nexus 2592](https://www.nexusmods.com/cyberpunk2077/mods/2592) |
-| `native-settings-ui` | 1.97 | manual | [Nexus 3518](https://www.nexusmods.com/cyberpunk2077/mods/3518) |
-| `native-settings-ui-side-menu-add-on` | 1.6.0 | manual | [Nexus 16218](https://www.nexusmods.com/cyberpunk2077/mods/16218) |
-| `ping` | 1.4.1 | manual | [Nexus 34933](https://www.nexusmods.com/cyberpunk2077/mods/34933) |
-| `preem-scanner` | 1.0.1a | manual | [Nexus 9215](https://www.nexusmods.com/cyberpunk2077/mods/9215) |
-| `preem-scopes` | 0.17.2 | manual | [Nexus 10021](https://www.nexusmods.com/cyberpunk2077/mods/10021) |
-| `virtual-atelier-delivery` | 1.1.4 | manual | [Nexus 21482](https://www.nexusmods.com/cyberpunk2077/mods/21482) |
-| `virtual-car-dealer` | 2.3.0 | manual | [Nexus 4454](https://www.nexusmods.com/cyberpunk2077/mods/4454) |
-| `weather-probability-rebalance` | 2.10 | manual | [Nexus 3196](https://www.nexusmods.com/cyberpunk2077/mods/3196) |
+| `equipment-ex` | 1.2.10 | nexus | [Nexus 6945](https://www.nexusmods.com/cyberpunk2077/mods/6945) |
+| `browser-extension` | 0.9.7 | nexus | [Nexus 10038](https://www.nexusmods.com/cyberpunk2077/mods/10038) |
+| `no-intro-videos` | 0.8 | nexus | [Nexus 533](https://www.nexusmods.com/cyberpunk2077/mods/533) |
+| `virtual-atelier` | 1.6.4 | nexus | [Nexus 2987](https://www.nexusmods.com/cyberpunk2077/mods/2987) |
+| `all-vanilla-clothes-atelier-store` | 1.0 | nexus | [Nexus 5544](https://www.nexusmods.com/cyberpunk2077/mods/5544) |
+| `autoloot` | 3.12.0 | nexus | [Nexus 5202](https://www.nexusmods.com/cyberpunk2077/mods/5202) |
+| `clean-voiceovers` | r1 | nexus | [Nexus 15285](https://www.nexusmods.com/cyberpunk2077/mods/15285) |
+| `custom-quickslots` | 5.7.1 | nexus | [Nexus 3096](https://www.nexusmods.com/cyberpunk2077/mods/3096) |
+| `cyberarms-patch` | 1.5 | nexus | [Nexus 4393](https://www.nexusmods.com/cyberpunk2077/mods/4393) |
+| `hd-reworked-project` | 2.0 | nexus | [Nexus 7652](https://www.nexusmods.com/cyberpunk2077/mods/7652) |
+| `disclosed-hidden-gems` | 1.1.0 | nexus | [Nexus 29021](https://www.nexusmods.com/cyberpunk2077/mods/29021) |
+| `drone-companions` | 1.20 | nexus | [Nexus 4520](https://www.nexusmods.com/cyberpunk2077/mods/4520) |
+| `hide-read-shards` | 0.4 | nexus | [Nexus 2820](https://www.nexusmods.com/cyberpunk2077/mods/2820) |
+| `limited-hud` | 2.23.1 | nexus | [Nexus 2592](https://www.nexusmods.com/cyberpunk2077/mods/2592) |
+| `native-settings-ui` | 1.97 | nexus | [Nexus 3518](https://www.nexusmods.com/cyberpunk2077/mods/3518) |
+| `native-settings-ui-side-menu-add-on` | 1.6.0 | nexus | [Nexus 16218](https://www.nexusmods.com/cyberpunk2077/mods/16218) |
+| `ping` | 1.4.1 | nexus | [Nexus 34933](https://www.nexusmods.com/cyberpunk2077/mods/34933) |
+| `preem-scanner` | 1.0.1a | nexus | [Nexus 9215](https://www.nexusmods.com/cyberpunk2077/mods/9215) |
+| `preem-scopes` | 0.17.2 | nexus | [Nexus 10021](https://www.nexusmods.com/cyberpunk2077/mods/10021) |
+| `virtual-atelier-delivery` | 1.1.4 | nexus | [Nexus 21482](https://www.nexusmods.com/cyberpunk2077/mods/21482) |
+| `virtual-car-dealer` | 2.3.0 | nexus | [Nexus 4454](https://www.nexusmods.com/cyberpunk2077/mods/4454) |
+| `weather-probability-rebalance` | 2.10 | nexus | [Nexus 3196](https://www.nexusmods.com/cyberpunk2077/mods/3196) |
 
 On 2026-11-07, eighteen packages were added from the owner's local downloads.
 Their SHA-256 values were computed from those files, and each `manual` source
@@ -52,10 +53,15 @@ names the exact downloaded filename. Each archive previewed as `reviewable`
 with the first-party Cyberpunk policy in a disposable fixture that supplied the
 framework markers. They were not installed into a live game in this change.
 
+On 2026-11-24, the 22 `manual` sources became `nexus` sources. Each local
+archive was matched to its Nexus file by MD5 through the Nexus API, and its
+SHA-256 still matched the record. `cyberarms-patch` now says version 1.5,
+because Nexus labels that same file 1.5; the record said 1.4.2.
+
 The Cyber Engine Tweaks and Input Loader GitHub assets are byte-identical to
 their Nexus files. The BetterLootMarkers GitHub release 1.4.1 is newer than
 the Nexus 1.4.0 file that was inspected.
-Equipment-EX is published as manual because the newest GitHub release, 1.2.7
+Equipment-EX is published from Nexus because the newest GitHub release, 1.2.7
 from 2024, predates game 2.5; 1.2.10 is on Nexus only.
 
 ## Declared executables
