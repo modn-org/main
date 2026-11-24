@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "preem-scanner",
+  "game": "cyberpunk-2077",
+  "name": "Preem Scanner - No Line Effect Removal",
+  "version": "1.0.1a",
+  "archive_format": "zip",
+  "blake3": "d487379d091c77ee9364cd6adaf641c47e662c62092aa7dcb030d097e48a5ece",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 9215,
+      "file_id": 49223,
+      "file_name": "Preem Scanner - No Line Effect Removal-9215-1-0-1a-1695485728.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "2c09a98af40853dbf70206b584967d922aee72674edc2ce5f430ce6eede0a1e0",
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/9215"
+}

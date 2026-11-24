@@ -1,1 +1,5 @@
 * text=auto eol=lf
+# Theme digests cover file bytes; keep theme text LF and theme art binary in every checkout.
+themes/** text eol=lf
+themes/**/*.png binary
+themes/**/*.woff2 binary

@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "hd-reworked-project",
+  "game": "cyberpunk-2077",
+  "name": "Cyberpunk 2077 HD Reworked Project - Balanced",
+  "version": "2.0",
+  "archive_format": "zip",
+  "blake3": "c8c93e668061279461de9e23561f98fd8d76b2444655d8913ec390cce1c75d55",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 7652,
+      "file_id": 52301,
+      "file_name": "Cyberpunk 2077 HD Reworked Project Balanced-7652-2-0-1696952040.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "3569925c14b5ae9dad937673b0af995f7e63e8d2ad3b999aa0b8f7c740998e08",
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/7652"
+}

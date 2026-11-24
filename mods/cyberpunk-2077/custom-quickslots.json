@@ -1,0 +1,26 @@
+{
+  "schema_version": 2,
+  "id": "custom-quickslots",
+  "game": "cyberpunk-2077",
+  "name": "Custom Quickslots",
+  "version": "5.7.1",
+  "archive_format": "zip",
+  "blake3": "056fbe325f25a04e15f5094ef2037c83bbb8afd066cec0411f336a3b6dad7798",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 3096,
+      "file_id": 168413,
+      "file_name": "Custom Quickslots 3096 5.7.1 2026-10-25T15-48Z 5em9eooP1.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "988a229108495aed4052582363f006521e809bb03e1486bd02eed0dccb8c0c1c",
+  "dependencies": [
+    "cet",
+    "input-loader",
+    "redscript"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/3096"
+}

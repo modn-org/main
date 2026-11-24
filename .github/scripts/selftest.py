@@ -11,8 +11,8 @@ from validate import ValidationError, validate
 
 def manifests(bucket: Path) -> list[Path]:
     return sorted(
-        path for path in (bucket / "games").glob("*/*.json")
-        if path.name != "module.json" and "@" not in path.stem
+        path for path in (bucket / "mods").glob("*/*.json")
+        if "@" not in path.stem
     )
 
 

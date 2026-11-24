@@ -40,6 +40,10 @@ jobs:
         run: >-
           python3 bucket/.github/scripts/validate.py bucket modn/target/debug/modn
           modn/target/debug/examples/sign_catalog dist
+      - name: Check the official Cyberpunk 2077 theme
+        run: >-
+          modn/target/debug/modn theme check
+          bucket/themes/cyberpunk-2077/night-city --json
       - name: Check that validation rejects broken buckets
         run: >-
           python3 bucket/.github/scripts/selftest.py bucket modn/target/debug/modn

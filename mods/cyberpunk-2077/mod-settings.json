@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "mod-settings",
+  "game": "cyberpunk-2077",
+  "name": "Mod Settings",
+  "version": "0.2.28",
+  "archive_format": "zip",
+  "blake3": "77a58eb48fdcddec17fe51d27fbcdaae3d10ed3c9c321dbcbbeca28c815bf3c4",
+  "sources": [
+    {
+      "kind": "https",
+      "url": "https://github.com/jackhumbert/mod_settings/releases/download/v0.2.28/mod_settings_v0.2.28.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "b9488daa7da85c0430853df4570dbf94dd768d11c4dabee97d732072746d40e7",
+  "dependencies": [
+    "archivexl",
+    "red4ext",
+    "redscript"
+  ],
+  "homepage": "https://github.com/jackhumbert/mod_settings"
+}

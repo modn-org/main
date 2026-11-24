@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "id": "ping",
+  "game": "cyberpunk-2077",
+  "name": "Ping",
+  "version": "1.4.1",
+  "archive_format": "zip",
+  "blake3": "decb03f155225e737a34c4af2e4988fafb82df043afa727cb7a7a475c24d2d21",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 34933,
+      "file_id": 169492,
+      "file_name": "Ping 34933 1.4.1 2026-10-27T18-03Z SlR4l66yv.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "8c30560583f7d8e63dc2466ee3d287ed9394c4ecaec25187cd01b8e437027544",
+  "dependencies": [
+    "codeware",
+    "redscript"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/34933"
+}

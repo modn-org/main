@@ -1,0 +1,26 @@
+{
+  "schema_version": 2,
+  "id": "tweakxl",
+  "game": "cyberpunk-2077",
+  "name": "TweakXL",
+  "version": "1.12.0",
+  "archive_format": "zip",
+  "blake3": "f716680cfd41458f43a808697d2b96e3f1f0a6881992b5fcc95d0fe6894bbf45",
+  "sources": [
+    {
+      "kind": "https",
+      "url": "https://github.com/psiberx/cp2077-tweak-xl/releases/download/v1.12.0/TweakXL-1.12.0.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "a7c39b769e6c51d9f27412a101fb87e6a1fb8452f0e37ee0d1d1f3f44e656fa8",
+  "dependencies": [
+    "red4ext",
+    "redscript"
+  ],
+  "homepage": "https://github.com/psiberx/cp2077-tweak-xl",
+  "dependency_versions": {
+    "red4ext": ">=1.31.0",
+    "redscript": ">=0.5.32"
+  }
+}
