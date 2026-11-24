@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "id": "disclosed-hidden-gems",
+  "game": "cyberpunk-2077",
+  "name": "Disclosed Hidden Gems",
+  "version": "1.1.0",
+  "archive_format": "zip",
+  "blake3": "8b351d88d9e80951167e6fcf8eae2f1b81bf2d74cdb8b9827c11344d71919a56",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 29021,
+      "file_id": 151880,
+      "file_name": "Disclosed Hidden Gems 29021 1.1.0 2026-07-13T00-22Z NEnvE3ZGK.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "a5edd0200eab1560fdebd2608e488819e689b6fc1e2913f67b85b479abf9c5ba",
+  "dependencies": [
+    "archivexl",
+    "cet",
+    "codeware",
+    "input-loader",
+    "redscript",
+    "tweakxl"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/29021"
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "input-loader",
+  "game": "cyberpunk-2077",
+  "name": "Input Loader",
+  "version": "0.2.6",
+  "archive_format": "zip",
+  "blake3": "16213be32efbb5794ed37bb4ea7b316c778562bfdad31d119fb85569b7792fff",
+  "sources": [
+    {
+      "kind": "https",
+      "url": "https://github.com/jackhumbert/cyberpunk2077-input-loader/releases/download/v0.2.6/input_loader_v0.2.6.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "6b420ba1e27b2e13c275a576a37a17d48771a0d35e52731f08e3584444a3e2b9",
+  "dependencies": [
+    "red4ext"
+  ],
+  "homepage": "https://github.com/jackhumbert/cyberpunk2077-input-loader",
+  "dependency_versions": {
+    "red4ext": ">=1.31.0"
+  }
+}

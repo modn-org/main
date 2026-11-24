@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "equipment-ex",
+  "game": "cyberpunk-2077",
+  "name": "Equipment-EX",
+  "version": "1.2.10",
+  "archive_format": "zip",
+  "blake3": "5dbc56dd57e9295f21b27a32a0b6c5df4396b07e1492558c24be08e926f0237d",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 6945,
+      "file_id": 168539,
+      "file_name": "Equipment-EX 6945 1.2.10 2026-10-25T21-07Z k8Iw8mmPd.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "bd3628af0851af4cc5083e40f890e9e7423305cb7e3017f48f9e06a8bc6b6e17",
+  "dependencies": [
+    "archivexl",
+    "codeware",
+    "redscript",
+    "tweakxl"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/6945",
+  "dependency_versions": {
+    "archivexl": ">=1.28.0",
+    "tweakxl": ">=1.12.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "id": "native-settings-ui",
+  "game": "cyberpunk-2077",
+  "name": "Native Settings UI",
+  "version": "1.97",
+  "archive_format": "zip",
+  "blake3": "1333ecb656a783ac8c45de8449b9a48beeda705e3cc644d49199b4d6bd203b45",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 3518,
+      "file_id": 167644,
+      "file_name": "Native Settings UI 1.97 3518 1.97 2026-10-22T15-26Z cB3xB00Va.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "8f9c6f5b0ef193f088376e738634449179b9f333c26610fbbcd0b17a14dbfb90",
+  "dependencies": [
+    "cet"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/3518",
+  "dependency_versions": {
+    "cet": ">=1.25.0"
+  }
+}

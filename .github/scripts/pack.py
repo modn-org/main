@@ -3,7 +3,7 @@ import argparse
 from pathlib import Path
 import zipfile
 
-BUCKET_ENTRIES = ("PROVENANCE.md", "bucket.json", "games")
+BUCKET_ENTRIES = ("PROVENANCE.md", "bucket.json", "mods", "games", "themes")
 
 
 def bucket_files(source: Path) -> list[Path]:

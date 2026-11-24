@@ -1,0 +1,26 @@
+{
+  "schema_version": 2,
+  "id": "browser-extension",
+  "game": "cyberpunk-2077",
+  "name": "Browser Extension",
+  "version": "0.9.7",
+  "archive_format": "7z",
+  "blake3": "f4de69ff8d26db98e4e850f9e4df87162d279a684b17459e2aa83d9f3f82cecc",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 10038,
+      "file_id": 121987,
+      "file_name": "BrowserExtensionFramework-10038-0-9-7-1758341320.7z"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "c290f0db802a00233e8f70f218248abdc6acdbe3348eceb484f33e2e1a75087d",
+  "dependencies": [
+    "codeware",
+    "red4ext",
+    "redscript"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/10038"
+}

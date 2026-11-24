@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "cyberarms-patch",
+  "game": "cyberpunk-2077",
+  "name": "Cyberarms Patch",
+  "version": "1.5",
+  "archive_format": "zip",
+  "blake3": "4a053800992065d2acf75aee4446f896c995278cdf01ad06366e909f4ede0e42",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 4393,
+      "file_id": 152237,
+      "file_name": "Cyberarms Patch 4393 1.5 2026-07-15T17-31Z 5em9eoITV.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "600438d4b7ae20b865e55c7d2bf3362aec62285c79cbcb7694f3d24e1a61b8b8",
+  "dependencies": [
+    "cet"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/4393"
+}

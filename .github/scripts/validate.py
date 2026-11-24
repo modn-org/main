@@ -33,8 +33,8 @@ def require(condition: bool, message: str) -> None:
 def current_releases(bucket: Path) -> set[tuple[str, str]]:
     return {
         (path.parent.name, path.stem)
-        for path in (bucket / "games").glob("*/*.json")
-        if path.name != "module.json" and "@" not in path.stem
+        for path in (bucket / "mods").glob("*/*.json")
+        if "@" not in path.stem
     }
 
 

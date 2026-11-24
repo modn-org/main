@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "virtual-atelier-delivery",
+  "game": "cyberpunk-2077",
+  "name": "Virtual Atelier Delivery",
+  "version": "1.1.4",
+  "archive_format": "zip",
+  "blake3": "9234e3f0b39556e1fda92dd01034ffe16e87bebb606012fdd107e3d86f971e91",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 21482,
+      "file_id": 165923,
+      "file_name": "Virtual Atelier Delivery 21482 1.1.4 2026-10-14T05-45Z 2w0lw1Tuq.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "65d87b33af91c5704cea00c656bec7a7bd3148d7cb8a9a466fe54190e008b457",
+  "dependencies": [
+    "archivexl",
+    "codeware",
+    "redscript",
+    "tweakxl",
+    "virtual-atelier"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/21482",
+  "dependency_versions": {
+    "virtual-atelier": ">=1.4.7"
+  }
+}

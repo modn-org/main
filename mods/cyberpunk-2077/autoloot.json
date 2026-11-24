@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "autoloot",
+  "game": "cyberpunk-2077",
+  "name": "Autoloot",
+  "version": "3.12.0",
+  "archive_format": "zip",
+  "blake3": "72cd57d8358a5cc4f88bfa6dc383ab8c8799673a84439c70302a8b465fcc7d13",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 5202,
+      "file_id": 167719,
+      "file_name": "Autoloot 5202 3.12.0 2026-10-23T00-14Z xNHtNXXsI.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "0ed67b61ad2afc6a124445b5d2394f2d81daea91a8e5750e97f31a319bf6e1a9",
+  "dependencies": [
+    "cet"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/5202"
+}

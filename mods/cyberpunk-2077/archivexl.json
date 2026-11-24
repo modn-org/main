@@ -1,0 +1,26 @@
+{
+  "schema_version": 2,
+  "id": "archivexl",
+  "game": "cyberpunk-2077",
+  "name": "ArchiveXL",
+  "version": "1.28.6",
+  "archive_format": "zip",
+  "blake3": "cbf137f3123ff10eaf008e9953ebb67f2dc6bcd500a7073d837f29a5ed0176f4",
+  "sources": [
+    {
+      "kind": "https",
+      "url": "https://github.com/psiberx/cp2077-archive-xl/releases/download/v1.28.6/ArchiveXL-1.28.6.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "25d0493a1b3e8ec4c26b7144a4d8f1a1def4d6dc840fff94b4c91c908583da09",
+  "dependencies": [
+    "red4ext",
+    "redscript"
+  ],
+  "homepage": "https://github.com/psiberx/cp2077-archive-xl",
+  "dependency_versions": {
+    "red4ext": ">=1.31.0",
+    "redscript": ">=0.5.32"
+  }
+}

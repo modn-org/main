@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "id": "red4ext",
+  "game": "cyberpunk-2077",
+  "name": "RED4ext",
+  "version": "1.31.0",
+  "archive_format": "zip",
+  "blake3": "0702ab607c8269acdd3ad7113bddf950118714824a08459b3e5d9a766bcfb9c4",
+  "sources": [
+    {
+      "kind": "https",
+      "url": "https://github.com/WopsS/RED4ext/releases/download/v1.31.0/red4ext-1.31.0.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "b9ae4351f547f90af58dfbf7445d45c55cd5ba24fbee27fb16fb5d91e9df621e",
+  "dependencies": [],
+  "homepage": "https://github.com/WopsS/RED4ext"
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "id": "virtual-atelier",
+  "game": "cyberpunk-2077",
+  "name": "Virtual Atelier",
+  "version": "1.6.4",
+  "archive_format": "zip",
+  "blake3": "c53f97ce2c6a038c7f097aa5a3ecc80e8196efc005705dc1332ed3c2da94a27d",
+  "sources": [
+    {
+      "kind": "nexus",
+      "game_domain": "cyberpunk2077",
+      "mod_id": 2987,
+      "file_id": 168466,
+      "file_name": "Virtual Atelier 2987 1.6.4 2026-10-25T17-42Z HncQn22j7.zip"
+    }
+  ],
+  "redistributable": false,
+  "upstream_sha256": "c0f27177a5f4d40f97923b775d8ab14d553f1d412940ac5bff9a9479717a6f7f",
+  "dependencies": [
+    "archivexl",
+    "codeware",
+    "mod-settings",
+    "redscript"
+  ],
+  "homepage": "https://www.nexusmods.com/cyberpunk2077/mods/2987"
+}
